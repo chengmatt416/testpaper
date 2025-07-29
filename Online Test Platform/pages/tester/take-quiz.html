@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taking Quiz - SecureTest</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="quiz-taking-page">
+    <div class="anti-cheat-overlay" id="antiCheatOverlay">
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Warning: Suspicious activity detected. This incident will be reported.</p>
+            <p>Please return to the quiz immediately.</p>
+            <div class="warning-countdown">
+                <span id="warningCountdown">5</span> seconds until quiz auto-submission
+            </div>
+        </div>
+    </div>
+
+    <header class="quiz-header">
+        <div class="quiz-info">
+            <h1 id="quizTitle">Advanced Mathematics Quiz</h1>
+            <div class="quiz-meta">
+                <span class="quiz-category"><i class="fas fa-folder"></i> Mathematics</span>
+                <span class="quiz-author"><i class="fas fa-user"></i> Prof. Jane Smith</span>
+            </div>
+        </div>
+        <div class="quiz-progress">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 25%;"></div>
+            </div>
+            <div class="progress-text">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></div>
+        </div>
+        <div class="quiz-timer">
+            <div class="timer-icon"><i class="fas fa-clock"></i></div>
+            <div class="timer-display">
+                <span id="timerMinutes">29</span>:<span id="timerSeconds">45</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="quiz-content">
+        <div class="question-container" id="questionContainer">
+            <div class="question-number">Question 1</div>
+            <div class="question-text">
+                <h2>Solve for x in the equation: 2x + 5 = 15</h2>
+            </div>
+            
+            <div class="answer-container">
+                <div class="multiple-choice-options">
+                    <div class="option">
+                        <input type="radio" id="option1" name="answer" value="A">
+                        <label for="option1">x = 5</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option2" name="answer" value="B">
+                        <label for="option2">x = 10</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option3" name="answer" value="C">
+                        <label for="option3">x = -5</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="option4" name="answer" value="D">
+                        <label for="option4">x = 7</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-actions">
+                <button class="btn secondary" id="prevQuestionBtn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <div class="question-flag">
+                    <input type="checkbox" id="flagQuestion" name="flagQuestion">
+                    <label for="flagQuestion">Flag for review</label>
+                </div>
+                <button class="btn primary" id="nextQuestionBtn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="quiz-footer">
+        <div class="quiz-navigation">
+            <h3>Question Navigation</h3>
+            <div class="navigation-buttons" id="navigationButtons">
+                <button class="nav-btn current">1</button>
+                <button class="nav-btn">2</button>
+                <button class="nav-btn flagged">3</button>
+                <button class="nav-btn">4</button>
+                <button class="nav-btn answered">5</button>
+                <button class="nav-btn">6</button>
+                <button class="nav-btn">7</button>
+                <button class="nav-btn answered">8</button>
+                <button class="nav-btn">9</button>
+                <button class="nav-btn">10</button>
+            </div>
+        </div>
+        <div class="quiz-submit">
+            <div class="quiz-status">
+                <div class="status-item">
+                    <span class="status-label">Answered:</span>
+                    <span class="status-value" id="answeredCount">2</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Unanswered:</span>
+                    <span class="status-value" id="unansweredCount">7</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Flagged:</span>
+                    <span class="status-value" id="flaggedCount">1</span>
+                </div>
+            </div>
+            <button class="btn primary submit-quiz-btn" id="submitQuizBtn">
+                Submit Quiz
+            </button>
+        </div>
+    </footer>
+
+    <!-- Quiz Submission Confirmation Modal -->
+    <div class="modal" id="submitConfirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Submit Quiz</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="submit-warning">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Are you sure you want to submit this quiz?</p>
+                </div>
+                <div class="submit-summary">
+                    <p>You have:</p>
+                    <ul>
+                        <li><span id="modalAnsweredCount">2</span> answered questions</li>
+                        <li><span id="modalUnansweredCount">7</span> unanswered questions</li>
+                        <li><span id="modalFlaggedCount">1</span> flagged questions</li>
+                    </ul>
+                    <p class="submit-note">Once submitted, you will not be able to make further changes.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="cancelSubmitBtn">Continue Quiz</button>
+                <button class="btn primary" id="confirmSubmitBtn">Submit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/quiz-taking.js"></script>
+</body>
+</html>

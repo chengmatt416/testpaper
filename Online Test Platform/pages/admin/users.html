@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - SecureTest Admin</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SecureTest</h2>
+                <span class="admin-badge">Admin</span>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="../../assets/img/avatar-placeholder.png" alt="Admin Avatar">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="user-details">
+                    <h3 id="adminName">Admin User</h3>
+                    <p id="adminEmail">admin@securetest.com</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="users.html">
+                            <i class="fas fa-users"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="regcodes.html">
+                            <i class="fas fa-key"></i>
+                            <span>Registration Codes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quizzes.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logs.html">
+                            <i class="fas fa-history"></i>
+                            <span>Security Logs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>User Management</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" id="userSearchInput" placeholder="Search users...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn primary" id="addUserBtn">
+                            <i class="fas fa-user-plus"></i> Add User
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-section">
+                <div class="user-filters">
+                    <div class="filter-group">
+                        <label for="roleFilter">Role:</label>
+                        <select id="roleFilter" class="form-control">
+                            <option value="all">All Roles</option>
+                            <option value="admin">Admin</option>
+                            <option value="editor">Editor</option>
+                            <option value="tester">Tester</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="statusFilter">Status:</label>
+                        <select id="statusFilter" class="form-control">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sortUsers">Sort By:</label>
+                        <select id="sortUsers" class="form-control">
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="date-asc">Registration (Oldest)</option>
+                            <option value="date-desc">Registration (Newest)</option>
+                            <option value="quizzes-desc">Most Quizzes</option>
+                        </select>
+                    </div>
+                    <button class="btn secondary" id="clearFiltersBtn">
+                        <i class="fas fa-times"></i> Clear Filters
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAllUsers" class="select-all-checkbox">
+                                </th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Registered</th>
+                                <th>Status</th>
+                                <th>Quizzes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-user-id="1">
+                                <td>
+                                    <input type="checkbox" class="user-select-checkbox">
+                                </td>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-avatar-small">
+                                            <img src="../../assets/img/avatar-placeholder.png" alt="User Avatar">
+                                        </div>
+                                        <span>John Smith</span>
+                                    </div>
+                                </td>
+                                <td>john.smith@example.com</td>
+                                <td><span class="role-badge admin">Admin</span></td>
+                                <td>2025-05-10</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>12</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn icon-btn edit-user" title="Edit user">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn icon-btn" title="Reset password">
+                                            <i class="fas fa-key"></i>
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn icon-btn dropdown-toggle">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a href="#" class="dropdown-item view-user">
+                                                    <i class="fas fa-eye"></i> View Details
+                                                </a>
+                                                <a href="#" class="dropdown-item impersonate-user">
+                                                    <i class="fas fa-user-secret"></i> Impersonate
+                                                </a>
+                                                <a href="#" class="dropdown-item suspend-user">
+                                                    <i class="fas fa-ban"></i> Suspend
+                                                </a>
+                                                <a href="#" class="dropdown-item delete-user">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-user-id="2">
+                                <td>
+                                    <input type="checkbox" class="user-select-checkbox">
+                                </td>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-avatar-small">
+                                            <img src="../../assets/img/avatar-placeholder.png" alt="User Avatar">
+                                        </div>
+                                        <span>Sarah Johnson</span>
+                                    </div>
+                                </td>
+                                <td>sarah.johnson@example.com</td>
+                                <td><span class="role-badge editor">Editor</span></td>
+                                <td>2025-06-15</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>24</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn icon-btn edit-user" title="Edit user">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn icon-btn" title="Reset password">
+                                            <i class="fas fa-key"></i>
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn icon-btn dropdown-toggle">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a href="#" class="dropdown-item view-user">
+                                                    <i class="fas fa-eye"></i> View Details
+                                                </a>
+                                                <a href="#" class="dropdown-item impersonate-user">
+                                                    <i class="fas fa-user-secret"></i> Impersonate
+                                                </a>
+                                                <a href="#" class="dropdown-item suspend-user">
+                                                    <i class="fas fa-ban"></i> Suspend
+                                                </a>
+                                                <a href="#" class="dropdown-item delete-user">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-user-id="3">
+                                <td>
+                                    <input type="checkbox" class="user-select-checkbox">
+                                </td>
+                                <td>
+                                    <div class="user-name-cell">
+                                        <div class="user-avatar-small">
+                                            <img src="../../assets/img/avatar-placeholder.png" alt="User Avatar">
+                                        </div>
+                                        <span>David Lee</span>
+                                    </div>
+                                </td>
+                                <td>david.lee@example.com</td>
+                                <td><span class="role-badge tester">Tester</span></td>
+                                <td>2025-07-01</td>
+                                <td><span class="status suspended">Suspended</span></td>
+                                <td>5</td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="btn icon-btn edit-user" title="Edit user">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn icon-btn" title="Reset password">
+                                            <i class="fas fa-key"></i>
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn icon-btn dropdown-toggle">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a href="#" class="dropdown-item view-user">
+                                                    <i class="fas fa-eye"></i> View Details
+                                                </a>
+                                                <a href="#" class="dropdown-item impersonate-user">
+                                                    <i class="fas fa-user-secret"></i> Impersonate
+                                                </a>
+                                                <a href="#" class="dropdown-item reactivate-user">
+                                                    <i class="fas fa-check-circle"></i> Reactivate
+                                                </a>
+                                                <a href="#" class="dropdown-item delete-user">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    <div class="bulk-actions">
+                        <select id="bulkActionSelect" class="form-control">
+                            <option value="">Bulk Actions</option>
+                            <option value="change-role">Change Role</option>
+                            <option value="suspend">Suspend Users</option>
+                            <option value="activate">Activate Users</option>
+                            <option value="delete">Delete Users</option>
+                        </select>
+                        <button class="btn secondary" id="applyBulkAction" disabled>Apply</button>
+                    </div>
+                    <div class="pagination">
+                        <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                        <div class="pagination-numbers">
+                            <button class="pagination-number active">1</button>
+                            <button class="pagination-number">2</button>
+                            <button class="pagination-number">3</button>
+                        </div>
+                        <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Add/Edit User Modal -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="userModalTitle">Add New User</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userName">Full Name*</label>
+                        <input type="text" id="userName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email*</label>
+                        <input type="email" id="userEmail" class="form-control" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="userRole">Role*</label>
+                            <select id="userRole" class="form-control" required>
+                                <option value="tester">Tester</option>
+                                <option value="editor">Editor</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group half">
+                            <label for="userStatus">Status*</label>
+                            <select id="userStatus" class="form-control" required>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="passwordGroup">
+                        <label for="userPassword">Password</label>
+                        <div class="input-with-action">
+                            <input type="password" id="userPassword" class="form-control">
+                            <button type="button" class="btn secondary btn-sm" id="generatePasswordBtn">
+                                Generate
+                            </button>
+                        </div>
+                        <small>Leave blank to send user a password reset email</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="sendWelcomeEmail" class="toggle-input" checked>
+                            <label for="sendWelcomeEmail" class="toggle-label"></label>
+                            <span class="toggle-text">Send welcome/reset password email</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="cancelUserBtn">Cancel</button>
+                <button class="btn primary" id="saveUserBtn">Save User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Details Modal -->
+    <div class="modal large-modal" id="userDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>User Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="user-details-container">
+                    <div class="user-header">
+                        <div class="user-avatar-large">
+                            <img src="../../assets/img/avatar-placeholder.png" alt="User Avatar">
+                        </div>
+                        <div class="user-title">
+                            <h3 id="detailsUserName">Sarah Johnson</h3>
+                            <span class="role-badge editor" id="detailsUserRole">Editor</span>
+                            <span class="status active"

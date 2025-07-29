@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Codes - SecureTest Admin</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar (same as in index.html) -->
+        <aside class="sidebar">
+            <!-- Sidebar content here - identical to admin/index.html -->
+            <div class="sidebar-header">
+                <h2>SecureTest</h2>
+                <span class="admin-badge">Admin</span>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="../../assets/img/avatar-placeholder.png" alt="Admin Avatar">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="user-details">
+                    <h3 id="adminName">Admin User</h3>
+                    <p id="adminEmail">admin@securetest.com</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.html">
+                            <i class="fas fa-users"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="regcodes.html">
+                            <i class="fas fa-key"></i>
+                            <span>Registration Codes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quizzes.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logs.html">
+                            <i class="fas fa-history"></i>
+                            <span>Security Logs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Registration Codes</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search codes...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn primary" id="generateNewCodeBtn">
+                            <i class="fas fa-plus"></i> Generate New Code
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-section">
+                <div class="active-code-section">
+                    <div class="section-header">
+                        <h2>Current Active Registration Code</h2>
+                    </div>
+                    <div class="active-code-container">
+                        <div class="code-display-large">
+                            <span id="currentActiveCode">SECURE-7290-TEST</span>
+                            <div class="code-actions">
+                                <button class="btn icon-btn" id="copyCodeBtn" title="Copy code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button class="btn icon-btn" id="regenerateCodeBtn" title="Regenerate code">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="code-info">
+                            <div class="info-item">
+                                <span class="info-label">Generated:</span>
+                                <span class="info-value">July 28, 2025 - 14:32</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Used:</span>
+                                <span class="info-value">2 times</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Status:</span>
+                                <span class="info-value status active">Active</span>
+                            </div>
+                        </div>
+                        <div class="code-settings">
+                            <h3>Code Settings</h3>
+                            <div class="form-group">
+                                <label for="codeExpiry">Code Expiry</label>
+                                <select id="codeExpiry" class="form-control">
+                                    <option value="never">Never (Default)</option>
+                                    <option value="24h">After 24 hours</option>
+                                    <option value="1w">After 1 week</option>
+                                    <option value="1m">After 1 month</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxUses">Maximum Uses</label>
+                                <input type="number" id="maxUses" class="form-control" value="0" min="0">
+                                <small>0 = unlimited</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="defaultRole">Default Role for New Users</label>
+                                <select id="defaultRole" class="form-control">
+                                    <option value="tester">Tester (Default)</option>
+                                    <option value="editor">Editor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="autoRegenerateToggle" class="toggle-input">
+                                    <label for="autoRegenerateToggle" class="toggle-label"></label>
+                                    <span class="toggle-text">Auto-regenerate after each use</span>
+                                </div>
+                            </div>
+                            <button class="btn primary" id="saveCodeSettings">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-history-section">
+                    <div class="section-header">
+                        <h2>Registration Code History</h2>
+                        <div class="section-actions">
+                            <select id="codeFilter" class="form-control">
+                                <option value="all">All Codes</option>
+                                <option value="active">Active</option>
+                                <option value="expired">Expired</option>
+                                <option value="revoked">Revoked</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Generated</th>
+                                    <th>Expires</th>
+                                    <th>Uses</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="code-text">SECURE-7290-TEST</span></td>
+                                    <td>July 28, 2025 - 14:32</td>
+                                    <td>Never</td>
+                                    <td>2/∞</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn icon-btn" title="Revoke code">
+                                                <i class="fas fa-ban"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-text">QUIZ-9821-BETA</span></td>
+                                    <td>July 25, 2025 - 09:45</td>
+                                    <td>July 26, 2025</td>
+                                    <td>5/5</td>
+                                    <td><span class="status expired">Expired</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn icon-btn" title="View registrations">
+                                                <i class="fas fa-users"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-text">TEST-4567-ALPHA</span></td>
+                                    <td>July 20, 2025 - 16:10</td>
+                                    <td>Never</td>
+                                    <td>12/∞</td>
+                                    <td><span class="status revoked">Revoked</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn icon-btn" title="View registrations">
+                                                <i class="fas fa-users"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-text">EXAM-3210-DEMO</span></td>
+                                    <td>July 15, 2025 - 11:22</td>
+                                    <td>August 15, 2025</td>
+                                    <td>3/10</td>
+                                    <td><span class="status expired">Expired</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn icon-btn" title="View registrations">
+                                                <i class="fas fa-users"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                        <span class="pagination-info">Page 1 of 1</span>
+                        <button class="pagination-btn" disabled><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="code-settings-section">
+                    <div class="section-header">
+                        <h2>Registration Code Configuration</h2>
+                    </div>
+                    <div class="settings-container">
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="codeFormat">Code Format</label>
+                                <input type="text" id="codeFormat" class="form-control" value="SECURE-####-TEST">
+                                <small>Use # for random digits, @ for random letters</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="globalCodeExpiry">Default Code Expiry</label>
+                                <select id="globalCodeExpiry" class="form-control">
+                                    <option value="never">Never</option>
+                                    <option value="24h">After 24 hours</option>
+                                    <option value="1w">After 1 week</option>
+                                    <option value="1m">After 1 month</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifyAdminsToggle" class="toggle-input" checked>
+                                    <label for="notifyAdminsToggle" class="toggle-label"></label>
+                                    <span class="toggle-text">Notify admins when code is used</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="singleUseToggle" class="toggle-input">
+                                    <label for="singleUseToggle" class="toggle-label"></label>
+                                    <span class="toggle-text">Make all codes single-use only</span>
+                                </div>
+                            </div>
+                            <button class="btn primary" id="saveGlobalSettings">Save Global Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for generating new code -->
+    <div class="modal" id="generateCodeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Generate New Registration Code</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="newCodeFormat">Code Format</label>
+                    <input type="text" id="newCodeFormat" class="form-control" value="SECURE-####-TEST">
+                    <small>Use # for random digits, @ for random letters</small>
+                </div>
+                <div class="form-group">
+                    <label for="newCodeExpiry">Code Expiry</label>
+                    <select id="newCodeExpiry" class="form-control">
+                        <option value="never">Never</option>
+                        <option value="24h">After 24 hours</option>
+                        <option value="1w">After 1 week</option>
+                        <option value="1m">After 1 month</option>
+                        <option value="custom">Custom date</option>
+                    </select>
+                </div>
+                <div class="form-group" id="customExpiryGroup" style="display: none;">
+                    <label for="customExpiryDate">Custom Expiry Date</label>
+                    <input type="datetime-local" id="customExpiryDate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="newCodeMaxUses">Maximum Uses</label>
+                    <input type="number" id="newCodeMaxUses" class="form-control" value="0" min="0">
+                    <small>0 = unlimited</small>
+                </div>
+                <div class="form-group">
+                    <label for="newCodeRole">Default Role for New Users</label>
+                    <select id="newCodeRole" class="form-control">
+                        <option value="tester">Tester</option>
+                        <option value="editor">Editor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="cancelGenerateCode">Cancel</button>
+                <button class="btn primary" id="confirmGenerateCode">Generate Code</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../assets/js/admin.js"></script>
+</body>
+</html>

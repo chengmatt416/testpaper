@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz - SecureTest</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SecureTest</h2>
+                <span class="editor-badge">Editor</span>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="../../assets/img/avatar-placeholder.png" alt="Editor Avatar">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="user-details">
+                    <h3 id="editorName">Editor User</h3>
+                    <p id="editorEmail">editor@securetest.com</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="create-quiz.html">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Create Quiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="my-quizzes.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>My Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quiz-templates.html">
+                            <i class="fas fa-copy"></i>
+                            <span>Templates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="results.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Results</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Create New Quiz</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button class="btn secondary" id="saveAsDraftBtn">
+                            <i class="fas fa-save"></i> Save as Draft
+                        </button>
+                        <button class="btn primary" id="previewQuizBtn">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-section">
+                <div class="quiz-creator">
+                    <div class="quiz-info-section">
+                        <div class="section-header">
+                            <h2>Quiz Information</h2>
+                        </div>
+                        <div class="quiz-info-form">
+                            <div class="form-group">
+                                <label for="quizTitle">Quiz Title*</label>
+                                <input type="text" id="quizTitle" class="form-control" placeholder="Enter quiz title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quizDescription">Description</label>
+                                <textarea id="quizDescription" class="form-control" rows="3" placeholder="Enter quiz description"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="quizCategory">Category</label>
+                                    <select id="quizCategory" class="form-control">
+                                        <option value="">Select a category</option>
+                                        <option value="math">Mathematics</option>
+                                        <option value="science">Science</option>
+                                        <option value="language">Language</option>
+                                        <option value="history">History</option>
+                                        <option value="programming">Programming</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group half">
+                                    <label for="difficultyLevel">Difficulty Level</label>
+                                    <select id="difficultyLevel" class="form-control">
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="expert">Expert</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="timeLimit">Time Limit (minutes)</label>
+                                    <input type="number" id="timeLimit" class="form-control" min="0" value="30">
+                                    <small>0 = No time limit</small>
+                                </div>
+                                <div class="form-group half">
+                                    <label for="passingScore">Passing Score (%)</label>
+                                    <input type="number" id="passingScore" class="form-control" min="0" max="100" value="70">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="security-settings-section">
+                        <div class="section-header">
+                            <h2>Security Settings</h2>
+                        </div>
+                        <div class="security-settings-form">
+                            <div class="security-options">
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="preventTabSwitching" class="toggle-input" checked>
+                                        <label for="preventTabSwitching" class="toggle-label"></label>
+                                    </div>
+                                    <div class="toggle-info">
+                                        <h4>Prevent Tab Switching</h4>
+                                        <p>Warns and logs when test-takers attempt to leave the quiz tab</p>
+                                    </div>
+                                </div>
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="preventCopyPaste" class="toggle-input" checked>
+                                        <label for="preventCopyPaste" class="toggle-label"></label>
+                                    </div>
+                                    <div class="toggle-info">
+                                        <h4>Prevent Copy-Paste</h4>
+                                        <p>Disables copying and pasting functionality during the quiz</p>
+                                    </div>
+                                </div>
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="randomizeQuestions" class="toggle-input" checked>
+                                        <label for="randomizeQuestions" class="toggle-label"></label>
+                                    </div>
+                                    <div class="toggle-info">
+                                        <h4>Randomize Questions</h4>
+                                        <p>Questions will appear in random order for each test-taker</p>
+                                    </div>
+                                </div>
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="fullScreenMode" class="toggle-input" checked>
+                                        <label for="fullScreenMode" class="toggle-label"></label>
+                                    </div>
+                                    <div class="toggle-info">
+                                        <h4>Full Screen Mode</h4>
+                                        <p>Force full screen mode during the quiz</p>
+                                    </div>
+                                </div>
+                                <div class="toggle-option">
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="showResults" class="toggle-input" checked>
+                                        <label for="showResults" class="toggle-label"></label>
+                                    </div>
+                                    <div class="toggle-info">
+                                        <h4>Show Results After Completion</h4>
+                                        <p>Test-takers will see their results immediately after submission</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="advanced-security">
+                                <h3>Advanced Security</h3>
+                                <div class="form-group">
+                                    <label for="maxAttempts">Maximum Attempts</label>
+                                    <input type="number" id="maxAttempts" class="form-control" min="1" value="1">
+                                    <small>Number of attempts allowed per user</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="accessCode">Quiz Access Code</label>
+                                    <div class="input-with-action">
+                                        <input type="text" id="accessCode" class="form-control" placeholder="Leave empty for no access code">
+                                        <button class="btn secondary btn-sm" id="generateAccessCode">
+                                            <i class="fas fa-key"></i> Generate
+                                        </button>
+                                    </div>
+                                    <small>Optional: Users will need this code to take the quiz</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-section">
+                        <div class="section-header">
+                            <h2>Questions</h2>
+                            <button class="btn primary" id="addQuestionBtn">
+                                <i class="fas fa-plus"></i> Add Question
+                            </button>
+                        </div>
+                        
+                        <div class="questions-container" id="questionsContainer">
+                            <!-- Example Question Card (Multiple Choice) -->
+                            <div class="question-card" data-question-id="1" data-question-type="multiple-choice">
+                                <div class="question-header">
+                                    <h3>Question 1</h3>
+                                    <div class="question-actions">
+                                        <select class="question-type-selector">
+                                            <option value="multiple-choice">Multiple Choice</option>
+                                            <option value="true-false">True/False</option>
+                                            <option value="short-answer">Short Answer</option>
+                                            <option value="essay">Essay</option>
+                                            <option value="matching">Matching</option>
+                                        </select>
+                                        <button class="btn icon-btn" title="Move up">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </button>
+                                        <button class="btn icon-btn" title="Move down">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </button>
+                                        <button class="btn icon-btn" title="Duplicate">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                        <button class="btn icon-btn delete-question" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="question-content">
+                                    <div class="form-group">
+                                        <label for="q1_text">Question Text*</label>
+                                        <textarea id="q1_text" class="form-control" rows="2" placeholder="Enter your question" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Options</label>
+                                        <div class="option-list" id="q1_options">
+                                            <div class="option-item">
+                                                <div class="option-correct">
+                                                    <input type="radio" name="q1_correct" id="q1_correct_1" checked>
+                                                </div>
+                                                <div class="option-text">
+                                                    <input type="text" class="form-control" placeholder="Option 1" required>
+                                                </div>
+                                                <div class="option-actions">
+                                                    <button class="btn icon-btn" title="Delete option">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="option-item">
+                                                <div class="option-correct">
+                                                    <input type="radio" name="q1_correct" id="q1_correct_2">
+                                                </div>
+                                                <div class="option-text">
+                                                    <input type="text" class="form-control" placeholder="Option 2" required>
+                                                </div>
+                                                <div class="option-actions">
+                                                    <button class="btn icon-btn" title="Delete option">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="option-item">
+                                                <div class="option-correct">
+                                                    <input type="radio" name="q1_correct" id="q1_correct_3">
+                                                </div>
+                                                <div class="option-text">
+                                                    <input type="text" class="form-control" placeholder="Option 3" required>
+                                                </div>
+                                                <div class="option-actions">
+                                                    <button class="btn icon-btn" title="Delete option">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="option-item">
+                                                <div class="option-correct">
+                                                    <input type="radio" name="q1_correct" id="q1_correct_4">
+                                                </div>
+                                                <div class="option-text">
+                                                    <input type="text" class="form-control" placeholder="Option 4" required>
+                                                </div>
+                                                <div class="option-actions">
+                                                    <button class="btn icon-btn" title="Delete option">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn secondary btn-sm add-option-btn">
+                                            <i class="fas fa-plus"></i> Add Option
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="q1_points">Points</label>
+                                        <input type="number" id="q1_points" class="form-control points-input" min="1" value="1">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="q1_feedback" class="toggle-input">
+                                            <label for="q1_feedback" class="toggle-label"></label>
+                                            <span class="toggle-text">Enable feedback</span>
+                                        </div>
+                                    </div>
+                                    <div class="feedback-section" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="q1_correct_feedback">Correct Answer Feedback</label>
+                                            <textarea id="q1_correct_feedback" class="form-control" rows="2" placeholder="Feedback for correct answer"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="q1_incorrect_feedback">Incorrect Answer Feedback</label>
+                                            <textarea id="q1_incorrect_feedback" class="form-control" rows="2" placeholder="Feedback for incorrect answer"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="questions-footer">
+                            <div class="quiz-summary">
+                                <p><strong>Total Questions:</strong> <span id="totalQuestions">1</span></p>
+                                <p><strong>Total Points:</strong> <span id="totalPoints">1</span></p>
+                            </div>
+                            <button class="btn primary" id="addQuestionBtnBottom">
+                                <i class="fas fa-plus"></i> Add Another Question
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-publish-section">
+                        <div class="section-header">
+                            <h2>Publish Settings</h2>
+                        </div>
+                        <div class="publish-options">
+                            <div class="form-group">
+                                <label for="quizStatus">Status</label>
+                                <select id="quizStatus" class="form-control">
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                    <option value="scheduled">Schedule Publication</option>
+                                </select>
+                            </div>
+                            <div class="form-group scheduled-options" style="display: none;">
+                                <label for="scheduleDate">Publication Date</label>
+                                <input type="datetime-local" id="scheduleDate" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="visibilityOption">Visibility</label>
+                                <select id="visibilityOption" class="form-control">
+                                    <option value="public">Public - Visible to all registered users</option>
+                                    <option value="restricted">Restricted - Require access code</option>
+                                    <option value="private">Private - Invite only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifyUsers" class="toggle-input">
+                                    <label for="notifyUsers" class="toggle-label"></label>
+                                    <span class="toggle-text">Notify users when published</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="publish-actions">
+                            <button class="btn secondary" id="cancelBtn">Cancel</button>
+                            <button class="btn primary" id="publishBtn">Publish Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Question Template Modal -->
+    <div class="modal" id="questionTemplateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Question Templates</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="template-filter">
+                    <label for="templateCategory">Filter by Category:</label>
+                    <select id="templateCategory" class="form-control">
+                        <option value="all">All Categories</option>
+                        <option value="math">Mathematics</option>
+                        <option value="science">Science</option>
+                        <option value="language">Language</option>
+                        <option value="history">History</option>
+                        <option value="programming">Programming</option>
+                    </select>
+                </div>
+                <div class="template-list">
+                    <div class="template-item" data-category="math">
+                        <h4>Basic Algebra Question</h4>
+                        <p>Multiple choice question on solving equations</p>
+                        <button class="btn secondary btn-sm">Use Template</button>
+                    </div>
+                    <div class="template-item" data-category="science">
+                        <h4>Scientific Method</h4>
+                        <p>Sequence ordering question about scientific method steps</p>
+                        <button class="btn secondary btn-sm">Use Template</button>
+                    </div>
+                    <div class="template-item" data-category="programming">
+                        <h4>Code Analysis Question</h4>
+                        <p>Short answer question about identifying errors in code</p>
+                        <button class="btn secondary btn-sm">Use Template</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Quiz Modal -->
+    <div class="modal large-modal" id="previewQuizModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Quiz Preview</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="quiz-preview-container">
+                    <div class="quiz-preview-header">
+                        <h3 id="previewQuizTitle">Quiz Title</h3>
+                        <p id="previewQuizDescription">Quiz description will appear here.</p>
+                        <div class="quiz-preview-meta">
+                            <span><i class="fas fa-clock"></i> <span id="previewTimeLimit">30</span> minutes</span>
+                            <span><i class="fas fa-star"></i> <span id="previewPassingScore">70</span>% to pass</span>
+                            <span><i class="fas fa-question-circle"></i> <span id="previewQuestionCount">1</span> questions</span>
+                        </div>
+                    </div>
+                    <div class="quiz-preview-questions" id="previewQuestionsContainer">
+                        <!-- Preview questions will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" id="closePreviewBtn">Close Preview</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="../../assets/js/quiz-creator.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SecureTest</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SecureTest</h2>
+                <span class="admin-badge">Admin</span>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="../../assets/img/avatar-placeholder.png" alt="Admin Avatar">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="user-details">
+                    <h3 id="adminName">Admin User</h3>
+                    <p id="adminEmail">admin@securetest.com</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.html">
+                            <i class="fas fa-users"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="regcodes.html">
+                            <i class="fas fa-key"></i>
+                            <span>Registration Codes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quizzes.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logs.html">
+                            <i class="fas fa-history"></i>
+                            <span>Security Logs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebarToggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="header-notifications">
+                        <a href="#" class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon users">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Users</h3>
+                        <p class="stat-number" id="totalUsers">358</p>
+                        <p class="stat-change positive">+12% <span>this month</span></p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon tests">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Active Tests</h3>
+                        <p class="stat-number" id="activeTests">42</p>
+                        <p class="stat-change positive">+5% <span>this week</span></p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon completions">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Test Completions</h3>
+                        <p class="stat-number" id="testCompletions">1,248</p>
+                        <p class="stat-change positive">+18% <span>this month</span></p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon alerts">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Security Alerts</h3>
+                        <p class="stat-number" id="securityAlerts">7</p>
+                        <p class="stat-change negative">+3 <span>this week</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-sections">
+                <section class="recent-activity">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon login">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>John Smith</strong> logged in to the system</p>
+                                <span class="timestamp">5 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon test">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Sarah Johnson</strong> created a new test: "Advanced Mathematics 301"</p>
+                                <span class="timestamp">32 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon alert">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Security Alert:</strong> Potential tab-switching detected during "Biology 101" test</p>
+                                <span class="timestamp">1 hour ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon registration">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Mike Wilson</strong> registered with code: "SP2025-EDU"</p>
+                                <span class="timestamp">3 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon completion">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>15 students</strong> completed "Introduction to Physics" test</p>
+                                <span class="timestamp">5 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="security-overview">
+                    <div class="section-header">
+                        <h2>Security Overview</h2>
+                        <a href="logs.html" class="view-all">View Logs</a>
+                    </div>
+                    <div class="security-stats">
+                        <div class="security-chart-container">
+                            <canvas id="securityChart"></canvas>
+                        </div>
+                        <div class="security-details">
+                            <div class="security-detail">
+                                <h4>Tab-switching attempts</h4>
+                                <p><span class="detail-number">27</span> in the past 24 hours</p>
+                            </div>
+                            <div class="security-detail">
+                                <h4>Copy prevention triggered</h4>
+                                <p><span class="detail-number">18</span> in the past 24 hours</p>
+                            </div>
+                            <div class="security-detail">
+                                <h4>Failed login attempts</h4>
+                                <p><span class="detail-number">12</span> in the past 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="dashboard-sections">
+                <section class="registration-codes-overview">
+                    <div class="section-header">
+                        <h2>Registration Codes</h2>
+                        <a href="regcodes.html" class="view-all">Manage Codes</a>
+                    </div>
+                    <div class="registration-code-info">
+                        <div class="reg-code-stats">
+                            <div class="reg-code-stat">
+                                <h4>Active Codes</h4>
+                                <p class="stat-number">5</p>
+                            </div>
+                            <div class="reg-code-stat">
+                                <h4>Used This Month</h4>
+                                <p class="stat-number">23</p>
+                            </div>
+                            <div class="reg-code-stat">
+                                <h4>Current Code</h4>
+                                <p class="code-display">SECURE-7290-TEST</p>
+                                <button class="btn secondary btn-sm regenerate-code">
+                                    <i class="fas fa-sync-alt"></i> Regenerate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="user-overview">
+                    <div class="section-header">
+                        <h2>User Overview</h2>
+                        <a href="users.html" class="view-all">Manage Users</a>
+                    </div>
+                    <div class="user-stats">
+                        <div class="user-chart-container">
+                            <canvas id="userRolesChart"></canvas>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-detail">
+                                <h4>Admins</h4>
+                                <p><span class="detail-number">3</span> users</p>
+                            </div>
+                            <div class="user-detail">
+                                <h4>Editors</h4>
+                                <p><span class="detail-number">15</span> users</p>
+                            </div>
+                            <div class="user-detail">
+                                <h4>Testers</h4>
+                                <p><span class="detail-number">340</span> users</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../assets/js/admin.js"></script>
+</body>
+</html>

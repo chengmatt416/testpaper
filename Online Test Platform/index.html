@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureTest - Online Testing Platform</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="anti-cheat-overlay" id="antiCheatOverlay">
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Warning: Suspicious activity detected. This incident will be reported.</p>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>SecureTest</h1>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="auth-link"><a href="pages/auth/login.html">Login</a></li>
+            </ul>
+            <div class="burger" id="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Secure Online Testing Platform</h1>
+                <p>Create, manage, and take tests with advanced anti-cheating measures</p>
+                <div class="cta-buttons">
+                    <a href="pages/auth/login.html" class="btn primary">Login</a>
+                    <a href="pages/auth/register.html" class="btn secondary">Register</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Advanced Quiz Generation</h3>
+                    <p>Create diverse question types including multiple choice, short answer, and essay questions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Anti-Cheating Measures</h3>
+                    <p>Browser focus detection, screen recording prevention, and AI-powered content similarity checks</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users-cog"></i>
+                    <h3>Role Management</h3>
+                    <p>Separate interfaces for administrators, editors, and test-takers</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-key"></i>
+                    <h3>Secure Registration</h3>
+                    <p>One-time registration codes controlled by administrators</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About SecureTest</h2>
+            <p>SecureTest is designed to provide educational institutions and organizations with a secure, reliable platform for conducting online assessments. Our focus on security and integrity ensures that your tests are protected against unauthorized access and academic dishonesty.</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>SecureTest</h2>
+                <p>Secure Online Testing Platform</p>
+                <p class="current-date">Current Date: 2025-07-29</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="pages/auth/login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 SecureTest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
