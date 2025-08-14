@@ -1,4 +1,4 @@
-name: Deploy Online Test Platform
+name: Deploy SecureShare File Sharing Platform
 
 on:
   push:

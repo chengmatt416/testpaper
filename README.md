@@ -1,23 +1,45 @@
-# SecureTest - Online Testing Platform
+# SecureShare - File Sharing Platform
 
-An advanced online testing platform with anti-cheating measures and secure quiz management.
+A modern, secure file sharing platform with enterprise-grade features and intuitive user interface.
 
 ## Features
 
-- **Advanced Quiz Generation**: Create diverse question types including multiple choice, short answer, and essay questions
-- **Anti-Cheating Measures**: Browser focus detection, screen recording prevention, and AI-powered content similarity checks
-- **Role Management**: Separate interfaces for administrators, editors, and test-takers
-- **Secure Registration**: One-time registration codes controlled by administrators
+- **Easy File Upload**: Drag and drop files or browse to upload documents, images, videos, and more
+- **Secure File Sharing**: Generate secure links, set permissions, and collaborate with teams
+- **Smart Organization**: Create folders, organize files, and find them quickly with search
+- **Storage Analytics**: Monitor usage, track activity, and manage storage efficiently
+- **Role Management**: Separate interfaces for administrators, managers, and users
+- **Enterprise Security**: End-to-end encryption, secure access controls, and detailed audit logs
 
 ## Live Demo
 
 The application is deployed on GitHub Pages: [https://chengmatt416.github.io/testpaper/](https://chengmatt416.github.io/testpaper/)
 
+## Demo Credentials
+
+To test the platform, use these demo accounts:
+
+### Admin Access
+- Email: `admin@secureshare.com`
+- Password: `admin123`
+- Features: User management, system administration, full access
+
+### Manager Access  
+- Email: `manager@secureshare.com`
+- Password: `manager123`
+- Features: File management, sharing, team collaboration
+
+### User Access
+- Email: `user@secureshare.com` 
+- Password: `user123`
+- Features: File upload, sharing, basic file management
+
 ## Getting Started
 
 1. Visit the live demo URL above
-2. Click "Login" or "Register" to get started
-3. Use the platform based on your role (admin, editor, or test-taker)
+2. Click "Get Started" or "Login"
+3. Use one of the demo accounts above
+4. Start uploading and sharing files!
 
 ## Local Development
 
@@ -39,13 +61,12 @@ Online Test Platform/
 ├── index.html              # Main homepage
 ├── assets/
 │   ├── css/
-│   │   └── styles.css       # Main stylesheet
+│   │   └── styles.css       # Main stylesheet with file sharing UI
 │   └── js/
 │       ├── app.js           # Main application logic
-│       ├── auth.js          # Authentication logic
-│       ├── admin.js         # Admin functionality
-│       ├── quiz-taking.js   # Quiz taking functionality
-│       └── quiz-creator.js  # Quiz creation functionality
+│       ├── auth.js          # Authentication system
+│       ├── admin.js         # Admin functionality  
+│       └── files.js         # File management system
 └── pages/
     ├── auth/
     │   ├── login.html       # Login page
@@ -54,20 +75,71 @@ Online Test Platform/
     │   ├── index.html       # Admin dashboard
     │   ├── users.html       # User management
     │   └── regcodes.html    # Registration codes
-    ├── editor/
-    │   └── create-quiz.html # Quiz creation
-    └── tester/
-        └── take-quiz.html   # Quiz taking interface
+    └── files/
+        └── dashboard.html   # File management interface
 ```
+
+## Key Features Implemented
+
+### File Management
+- **Drag & Drop Upload**: Intuitive file upload with progress tracking
+- **File Organization**: Create folders and organize files efficiently
+- **File Actions**: Download, share, and delete files with one click
+- **Search & Filter**: Find files quickly by name or type
+- **File Preview**: Visual file type indicators and metadata display
+
+### Sharing & Collaboration  
+- **Secure Links**: Generate shareable links for any file
+- **Permission Control**: Manage who can access shared files
+- **Team Collaboration**: Share files with team members
+- **Activity Tracking**: Monitor file access and sharing activity
+
+### Storage & Analytics
+- **Usage Monitoring**: Track storage usage and file counts
+- **Activity Dashboard**: View recent file operations
+- **Storage Limits**: Monitor and manage storage quotas
+- **Performance Metrics**: Analyze upload/download patterns
+
+### Security Features
+- **User Authentication**: Secure login with role-based access
+- **Access Controls**: Granular permissions for files and folders
+- **Audit Logging**: Track all file operations and user activity
+- **Secure URLs**: Time-limited and encrypted sharing links
 
 ## Technology Stack
 
-- HTML5
-- CSS3
+- HTML5 & CSS3
 - JavaScript (ES6+)
 - Font Awesome Icons
 - LocalStorage for data persistence
+- Responsive Design
+- Progressive Web App features
 
 ## Deployment
 
-The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch.
+The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch. The deployment workflow handles:
+
+- Automatic building and optimization
+- Static file serving
+- HTTPS security
+- Global CDN distribution
+
+## Browser Support
+
+- Chrome 70+
+- Firefox 65+  
+- Safari 12+
+- Edge 79+
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
