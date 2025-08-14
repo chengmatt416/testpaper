@@ -70,4 +70,16 @@ Online Test Platform/
 
 ## Deployment
 
-The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch.
+The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch. The deployment workflow also supports manual triggering for on-demand deployments.
+
+### Deployment Features:
+- **Automatic Deployment**: Triggered on every push to main branch
+- **Manual Deployment**: Can be triggered manually via GitHub Actions with optional reason
+- **Deployment Logging**: Shows repository info, branch, commit, and deployment reason
+- **Live Site**: [https://chengmatt416.github.io/testpaper/](https://chengmatt416.github.io/testpaper/)
+
+### Deployment Workflow:
+1. Code changes pushed to main branch (or manual trigger)
+2. GitHub Actions builds and packages the application
+3. Content from `./Online Test Platform` directory is deployed
+4. Site becomes available at the GitHub Pages URL
