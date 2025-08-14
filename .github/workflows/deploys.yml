@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - copilot/fix-56064056-2d00-47cb-8e45-e455bf7c1368
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,7 +29,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: "./Online Test Platform"
 
       - name: Deploy to GitHub Pages
         id: deployment
