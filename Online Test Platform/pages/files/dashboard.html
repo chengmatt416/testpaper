@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Dashboard - SecureShare</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <h2>SecureShare</h2>
+                <span class="user-role">File Manager</span>
+            </div>
+            
+            <div class="user-info">
+                <img src="../../assets/img/user-avatar.png" alt="User Avatar" class="user-avatar" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNlNzRjM2MiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMyYzAtNi42MjcgNS4zNzMtMTIgMTItMTJzMTIgNS4zNzMgMTIgMTIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo='">
+                <div class="user-details">
+                    <h3>User Name</h3>
+                    <p class="user-email">user@secureshare.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="my-files.html">
+                        <i class="fas fa-folder"></i>
+                        <span>My Files</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="shared-with-me.html">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Shared With Me</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="recent.html">
+                        <i class="fas fa-clock"></i>
+                        <span>Recent</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="trash.html">
+                        <i class="fas fa-trash"></i>
+                        <span>Trash</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="#" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>File Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="header-search">
+                    <input type="text" placeholder="Search files..." id="fileSearch">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="btn primary" id="uploadBtn">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Upload Files
+                </button>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <!-- File Upload Area -->
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag and drop files here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" multiple accept="*/*">
+                </div>
+            </div>
+            
+            <!-- Storage Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Storage Used</h3>
+                        <p class="stat-number">2.5 GB</p>
+                        <p class="stat-detail">
+                            <span class="positive">+0.5 GB</span>
+                            <span class="text-muted">this month</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Files</h3>
+                        <p class="stat-number">126</p>
+                        <p class="stat-detail">
+                            <span class="positive">+8</span>
+                            <span class="text-muted">this week</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Shared Files</h3>
+                        <p class="stat-number">23</p>
+                        <p class="stat-detail">
+                            <span class="positive">+3</span>
+                            <span class="text-muted">this week</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Downloads</h3>
+                        <p class="stat-number">89</p>
+                        <p class="stat-detail">
+                            <span class="positive">+12</span>
+                            <span class="text-muted">this month</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Files -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>Recent Files</h2>
+                    <a href="my-files.html" class="view-all">View All</a>
+                </div>
+                
+                <div class="files-grid" id="recentFilesGrid">
+                    <!-- Files will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="createFolder()">
+                        <i class="fas fa-folder-plus"></i>
+                        <span>New Folder</span>
+                    </button>
+                    <button class="action-btn" onclick="shareFile()">
+                        <i class="fas fa-share"></i>
+                        <span>Share File</span>
+                    </button>
+                    <button class="action-btn" onclick="viewShared()">
+                        <i class="fas fa-users"></i>
+                        <span>View Shared</span>
+                    </button>
+                    <button class="action-btn" onclick="manageStorage()">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Storage Info</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Upload Progress Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Uploading Files</h3>
+                <button class="modal-close" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-progress" id="uploadProgress">
+                    <!-- Progress items will be added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../assets/js/files.js"></script>
+</body>
+</html>

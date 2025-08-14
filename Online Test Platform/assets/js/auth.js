@@ -53,18 +53,18 @@ function handleLogin(e) {
     // Simulate authentication (in a real app, this would be an API call)
     setTimeout(() => {
         // Mock authentication logic
-        if (email === 'admin@securetest.com' && password === 'admin123') {
+        if (email === 'admin@secureshare.com' && password === 'admin123') {
             localStorage.setItem('userRole', 'admin');
             localStorage.setItem('userEmail', email);
             window.location.href = '../admin/index.html';
-        } else if (email === 'editor@securetest.com' && password === 'editor123') {
-            localStorage.setItem('userRole', 'editor');
+        } else if (email === 'manager@secureshare.com' && password === 'manager123') {
+            localStorage.setItem('userRole', 'manager');
             localStorage.setItem('userEmail', email);
-            window.location.href = '../editor/create-quiz.html';
-        } else if (email === 'student@securetest.com' && password === 'student123') {
-            localStorage.setItem('userRole', 'student');
+            window.location.href = '../files/dashboard.html';
+        } else if (email === 'user@secureshare.com' && password === 'user123') {
+            localStorage.setItem('userRole', 'user');
             localStorage.setItem('userEmail', email);
-            window.location.href = '../tester/take-quiz.html';
+            window.location.href = '../files/dashboard.html';
         } else {
             showAuthError('Invalid email or password');
             submitButton.textContent = originalText;
@@ -112,7 +112,7 @@ function handleRegistration(e) {
     // Simulate registration (in a real app, this would be an API call)
     setTimeout(() => {
         // Mock registration codes
-        const validCodes = ['ADMIN2024', 'EDITOR2024', 'STUDENT2024'];
+        const validCodes = ['ADMIN2024', 'MANAGER2024', 'USER2024'];
         
         if (validCodes.includes(regCode.toUpperCase())) {
             showAuthSuccess('Account created successfully! Please log in.');
@@ -282,11 +282,9 @@ function checkAuthStatus() {
             case 'admin':
                 window.location.href = '../admin/index.html';
                 break;
-            case 'editor':
-                window.location.href = '../editor/create-quiz.html';
-                break;
-            case 'student':
-                window.location.href = '../tester/take-quiz.html';
+            case 'manager':
+            case 'user':
+                window.location.href = '../files/dashboard.html';
                 break;
         }
     }
