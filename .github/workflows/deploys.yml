@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      deploy_reason:
+        description: 'Reason for manual deployment'
+        required: false
+        default: 'Manual deployment requested'
 
 permissions:
   contents: read
@@ -23,6 +28,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
       
     steps:
+      - name: Show deployment info
+        run: |
+          echo "Deploying SecureTest Online Testing Platform"
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Deploy reason: ${{ github.event.inputs.deploy_reason || 'Automatic deployment on push' }}"
+          
       - name: Checkout code
         uses: actions/checkout@v4
 
