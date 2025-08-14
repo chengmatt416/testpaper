@@ -211,7 +211,10 @@ function resetQuestionForm() {
 }
 
 function updateQuestionForm() {
-    const questionType = document.getElementById('questionType').value;
+    const questionTypeElement = document.getElementById('questionType');
+    if (!questionTypeElement) return; // Guard clause if element doesn't exist
+    
+    const questionType = questionTypeElement.value;
     const multipleChoiceOptions = document.getElementById('multipleChoiceOptions');
     const shortAnswerOption = document.getElementById('shortAnswerOption');
     
