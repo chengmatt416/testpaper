@@ -177,6 +177,13 @@ function startQuiz() {
     console.log(`Quiz started: ${quizData.title} at ${new Date().toISOString()}`);
 }
 
+function initTimeTracker() {
+    // Initialize time tracking functionality
+    // This function sets up the timer but doesn't start it
+    // Timer is started when quiz begins in startQuiz() function
+    updateTimerDisplay();
+}
+
 function startTimer() {
     updateTimerDisplay();
     
@@ -460,9 +467,9 @@ function showQuizResults(score) {
         } else if (score.percentage >= 70) {
             performanceMessage = 'Good job!';
         } else if (score.percentage >= 60) {
-            performanceMessage = 'You passed, but there\\'s room for improvement.';
+            performanceMessage = 'You passed, but there\'s room for improvement.';
         } else {
-            performanceMessage = 'You didn\\'t pass this time. Keep studying!';
+            performanceMessage = 'You didn\'t pass this time. Keep studying!';
         }
         
         document.getElementById('performanceMessage').textContent = performanceMessage;
