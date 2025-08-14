@@ -1181,3 +1181,63 @@ footer {
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }
+
+/* Password Strength Indicator */
+.password-strength {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.password-strength.very-weak {
+    color: #e74c3c;
+}
+
+.password-strength.weak {
+    color: #e67e22;
+}
+
+.password-strength.medium {
+    color: #f39c12;
+}
+
+.password-strength.strong {
+    color: #27ae60;
+}
+
+.password-strength.very-strong {
+    color: #16a085;
+}
+
+/* Field Error Messages */
+.field-error {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.input-icon-wrap input.error {
+    border-color: #e74c3c;
+    background: #fdf2f2;
+}
+
+/* Loading States */
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Burger Menu Animation */
+.burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .line2 {
+    opacity: 0;
+}
+
+.burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
