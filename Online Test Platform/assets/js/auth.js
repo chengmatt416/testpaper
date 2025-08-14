@@ -57,6 +57,10 @@ function handleLogin(e) {
             localStorage.setItem('userRole', 'admin');
             localStorage.setItem('userEmail', email);
             window.location.href = '../admin/index.html';
+        } else if (email === 'superadmin@securetest.com' && password === 'SecureAdmin2024!') {
+            localStorage.setItem('userRole', 'admin');
+            localStorage.setItem('userEmail', email);
+            window.location.href = '../admin/index.html';
         } else if (email === 'editor@securetest.com' && password === 'editor123') {
             localStorage.setItem('userRole', 'editor');
             localStorage.setItem('userEmail', email);
